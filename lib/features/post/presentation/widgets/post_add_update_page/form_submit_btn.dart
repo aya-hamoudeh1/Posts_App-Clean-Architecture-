@@ -15,7 +15,10 @@ class FormSubmitBtn extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton.icon(
       onPressed: onPressed,
-      icon: isUpdatePost ? Icon(Icons.edit) : Icon(Icons.add),
+      icon:
+          isUpdatePost
+              ? Icon(Icons.edit, color: Colors.white)
+              : Icon(Icons.add, color: Colors.white),
       label: Text(
         isUpdatePost ? 'Update' : 'Add',
         style: TextStyle(color: Colors.white),

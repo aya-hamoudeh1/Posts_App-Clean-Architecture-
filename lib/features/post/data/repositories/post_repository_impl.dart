@@ -17,9 +17,9 @@ class PostRepositoryImpl implements PostRepository {
   final NetworkInfo networkInfo;
 
   PostRepositoryImpl({
-    required this.networkInfo,
-    required this.remoteDataSource,
     required this.localDataSource,
+    required this.remoteDataSource,
+    required this.networkInfo,
   });
 
   /// Get All Posts
@@ -77,7 +77,6 @@ class PostRepositoryImpl implements PostRepository {
       return remoteDataSource.updatePost(postModel);
     });
   }
-
 
   Future<Either<Failure, Unit>> _getMessage(
     DeleteOrUpdateOrAddPost deleteOrUpdateOrAddPost,

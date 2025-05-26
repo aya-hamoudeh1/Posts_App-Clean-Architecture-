@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:posts_app/features/post/presentation/bloc/add_delete_update_post/add_delete_update_post_bloc.dart';
 import 'package:posts_app/features/post/presentation/bloc/posts/posts_bloc.dart';
 import 'core/app_theme.dart';
+import 'features/post/presentation/pages/posts_page.dart';
 import 'injection_container.dart' as di;
 
 void main() async {
@@ -18,14 +19,16 @@ class PostsApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_) => di.sl<PostsBloc>()),
+        BlocProvider(
+          create: (_) => di.sl<PostsBloc>()..add(GetAllPostsEvent()),
+        ),
         BlocProvider(create: (_) => di.sl<AddDeleteUpdatePostBloc>()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: appTheme,
         title: 'Posts App',
-        home: Scaffold(appBar: AppBar(title: Text('Posts'))),
+        home: PostsPage(),
       ),
     );
   }

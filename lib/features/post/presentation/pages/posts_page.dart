@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:posts_app/features/post/presentation/bloc/posts/posts_bloc.dart';
 import 'package:posts_app/features/post/presentation/pages/post_add_update_page.dart';
-
 import '../../../../core/widgets/loading_widget.dart';
 import '../widgets/posts_page/message_display.dart';
 import '../widgets/posts_page/post_list_widget.dart';
@@ -19,7 +18,8 @@ class PostsPage extends StatelessWidget {
     );
   }
 
-  AppBar _buildAppBar() => AppBar(title: Text('Posts'));
+  AppBar _buildAppBar() =>
+      AppBar(title: Text('Posts', style: TextStyle(color: Colors.white)));
 
   Widget _buildBody() {
     return Padding(

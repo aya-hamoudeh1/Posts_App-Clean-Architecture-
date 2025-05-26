@@ -14,14 +14,19 @@ class PostAddUpdatePage extends StatelessWidget {
   final bool isUpdatePost;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: _buildAppBar(), body: _buildBody(context));
+    return Scaffold(appBar: _buildAppBar(), body: _buildBody());
   }
 
   AppBar _buildAppBar() {
-    return AppBar(title: Text(isUpdatePost ? 'Edit Post' : 'Add Post'));
+    return AppBar(
+      title: Text(
+        isUpdatePost ? 'Edit Post' : 'Add Post',
+        style: TextStyle(color: Colors.white),
+      ),
+    );
   }
 
-  Widget _buildBody(BuildContext context) {
+  Widget _buildBody() {
     return Center(
       child: Padding(
         padding: EdgeInsets.all(10),

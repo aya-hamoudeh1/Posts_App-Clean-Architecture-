@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:posts_app/features/post/presentation/bloc/posts/posts_bloc.dart';
+import 'package:posts_app/features/post/presentation/pages/post_add_update_page.dart';
 
 import '../../../../core/widgets/loading_widget.dart';
-import '../widgets/message_display.dart';
-import '../widgets/post_list_widget.dart';
+import '../widgets/posts_page/message_display.dart';
+import '../widgets/posts_page/post_list_widget.dart';
 
 class PostsPage extends StatelessWidget {
   const PostsPage({super.key});
@@ -14,7 +15,7 @@ class PostsPage extends StatelessWidget {
     return Scaffold(
       appBar: _buildAppBar(),
       body: _buildBody(),
-      floatingActionButton: _buildFloatingBtn(),
+      floatingActionButton: _buildFloatingBtn(context),
     );
   }
 
@@ -41,13 +42,21 @@ class PostsPage extends StatelessWidget {
     );
   }
 
-  Widget _buildFloatingBtn() {
-    return FloatingActionButton(onPressed: () {}, child: Icon(Icons.add));
+  Widget _buildFloatingBtn(BuildContext context) {
+    return FloatingActionButton(
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => PostAddUpdatePage(isUpdatePost: false),
+          ),
+        );
+      },
+      child: Icon(Icons.add),
+    );
   }
 
   Future<void> _onRefresh(BuildContext context) async {
     BlocProvider.of<PostsBloc>(context).add(RefreshPostsEvent());
   }
 }
-
-/// 13=> 16:00
